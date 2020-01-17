@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{object.title}} - {{block.super}}
+{% endblock title %}
+
+{% block main %}
+    <h1>{{movie}}</h1>
+    <p>{{movie.plot}}</p>
+{% endblock main %}
+
+{% block sidebar %}
+    This movie is rated:
+    {{movie.get_rating_display}}
+{% endblock sidebar %}
