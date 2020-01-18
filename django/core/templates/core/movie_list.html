@@ -14,4 +14,42 @@ All the Movies
         </li>
     {% endfor %}
 </ul>
+
+<!--Pagination-->
+    {% if is_paginated %}
+        <li>
+            <a href="{% url 'core:MovieList' %}?page=1">
+            First
+            </a>
+        </li>
+
+        {% if page_obj.has_previous %}
+            <li>
+                <a href="{% url 'core:MovieList' %}?page={{page_obj.previous_page_number}}">
+                    {{page_obj.previous_page_number}}
+                </a>
+            </li>
+        {% endif %}
+
+        <li>
+            <a href="{% url 'core:MovieList' %}?page={{page_obj.number}}">
+                {{page_obj.number}}
+            </a>
+        </li>
+
+        {% if page_obj.has_next %}
+            <li>
+                <a href="{% url 'core:MovieList' %}?page={{page_obj.next_page_number}}">
+                    {{page_obj.next_page_number}}
+                </a>
+            </li>
+        {% endif %}
+
+        <li>
+            <a href="{% url 'core:MovieList' %}?page=last">
+                Last
+            </a>
+        </li>
+
+    {% endif %}
 {% endblock main %}
