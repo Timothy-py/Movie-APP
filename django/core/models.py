@@ -47,11 +47,23 @@ class Movie(models.Model):
         return '{} = {}'.format(self.title, self.year)
 
 
+class PersonManager(models.Manager):
+    def all_with_prefetch_movies(self):
+        qs = self.get_queryset()
+        return qs.prefetch_related(
+            'directed',
+            'writing_credits',
+            'role_set__movie'
+        )
+
+
 class Person(models.Model):
     first_name = models.CharField(max_length=140)
     last_name = models.CharField(max_length=140)
     born = models.DateField()
     died = models.DateField(null=True, blank=True)
+
+    objects = PersonManager()
 
     class Meta:
         ordering = ('last_name', 'first_name')
