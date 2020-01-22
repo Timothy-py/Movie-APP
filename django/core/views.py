@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, GenericViewError
+from django.views.generic import ListView, DetailView
 
 
 from .models import Movie, Person
@@ -14,7 +14,9 @@ class MovieList(ListView):
 
 
 class MovieDetail(DetailView):
-    model = Movie
+    queryset = (
+        Movie.objects.all_with_related_persons()
+    )
     context_object_name = "movie"
 
 
