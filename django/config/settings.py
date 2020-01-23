@@ -131,3 +131,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'templates/core/movie_list.html'
+
+AUTH_USER_MODEL = "auth.User"
