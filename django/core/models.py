@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.aggregates import Sum
+
 from config import settings
 
 # Create your models here.
@@ -15,6 +17,11 @@ class MovieManager(models.Manager):
             'writers',
             'actors'
         )
+        return qs
+
+    def all_with_related_persons_and_score(self):
+        qs = self.all_with_related_persons()
+        qs = qs.annotate(score=Sum('vote__value'))
         return qs
 
 
