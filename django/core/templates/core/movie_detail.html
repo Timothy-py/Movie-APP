@@ -5,6 +5,19 @@
 {% endblock title %}
 
 {% block main %}
+
+    <div>
+        <h1>{{object}}</h1>
+        <p>{{object.plot}}</p>
+    </div>
+
+    <ul>
+        {% for i in object.movieimage_set.all %}
+            <li><img src="{{i.image.url}}"></li>
+        {% endfor %}
+    </ul>
+
+    <p>Directed by {{object.director}}</p>
     <h1>{{movie}}</h1>
     <p>{{movie.plot}}</p>
 {% endblock main %}
@@ -14,6 +27,20 @@
         This movie is rated:
         {{movie.get_rating_display}}
     </div>
+
+    {% if image_form %}
+        <div>
+            <h2>Upload New Image</h2>
+            <form method="post"
+                  enctype="multipart/form-data"
+                  action="{% url 'core:MovieImageUpload' movie_id=object.id %}">{% csrf_token %}
+                {{image_form.as_p}}
+                <p>
+                    <button>Upload</button>
+                </p>
+            </form>
+        </div>
+    {% endif %}
 
     <div>
         <h2>
