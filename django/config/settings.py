@@ -133,3 +133,7 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'templates/core/movie_list.html'
 
 AUTH_USER_MODEL = "auth.User"
+
+MEDIA_URL = '/uploaded/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
