@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
+# username - Timothy
+# password - plati442
 
 import os
 
@@ -91,6 +93,13 @@ DATABASES = {
     },
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'default-locmemecache',
+        'TIMEOUT': 5,   # 5 seconds
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -137,3 +146,5 @@ AUTH_USER_MODEL = "auth.User"
 MEDIA_URL = '/uploaded/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+
+CSRF_USE_SESSIONS = True

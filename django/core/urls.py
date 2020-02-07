@@ -9,5 +9,5 @@ urlpatterns = [
     path('movie/<int:movie_id>/vote', CreateVote.as_view(), name='CreateVote'),
     path('movie/<int:movie_id>/vote/<int:pk>', UpdateVote.as_view(), name='UpdateVote'),
     path('movie/<int:movie_id>/image/upload', MovieImageUpload.as_view(), name='MovieImageUpload'),
-    path('moves/top', TopMovies.as_view(), name='TopMovies'),
+    path('movies/top', TopMovies.as_view(), name='TopMovies'),
 ]
