@@ -23,7 +23,8 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '457!#74wwbs2n60!_c-c38^%0+#g+qh@xe5yt2#+y-)uw3pa@k'
+# SECRET_KEY = '457!#74wwbs2n60!_c-c38^%0+#g+qh@xe5yt2#+y-)uw3pa@k'
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -82,24 +83,26 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'moviedb',
-        'USER': 'timothy',
-        'PASSWORD': 'plati442',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    },
-}
-
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-        'LOCATION': 'default-locmemecache',
-        'TIMEOUT': 5,   # 5 seconds
+            'ENGINE': 'django.db.backends.postgresql'
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'moviedb',
+    #     'USER': 'timothy',
+    #     'PASSWORD': 'plati442',
+    #     'HOST': '127.0.0.1',
+    #     'PORT': '5432',
+    # },
 }
+
+# CACHES = {
+#     'default': {
+#         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+#         'LOCATION': 'default-locmemecache',
+#         'TIMEOUT': 5,   # 5 seconds
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -138,6 +141,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
 LOGIN_REDIRECT_URL = 'templates/core/movie_list.html'
 
