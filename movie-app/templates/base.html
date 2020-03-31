@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title%}
+        MyMDB
+        {% endblock title%}
+    </title>
+
+</head>
+<body>
+    <a href="{% url 'core:MovieList' %}">
+        Movies
+    </a>
+
+    {% block main %}
+
+    {% endblock main%}
+
+    {% block sidebar %}
+    {% endblock sidebar %}
+</body>
+</html>
