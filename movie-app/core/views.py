@@ -105,7 +105,7 @@ class UpdateVote(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         movie_id = self.object.movie.id
         return reverse(
-            'core: MovieDetail', kwargs={'pk': movie_id}
+            'core:MovieDetail', kwargs={'pk': movie_id}
         )
 
     def render_to_response(self, context, **response_kwargs):
