@@ -167,7 +167,7 @@ class Vote(models.Model):
 
 
 def movie_directory_path_with_uuid(instance, filename):
-    return '{{}/{}}'.format(instance.movie_id, uuid4())
+    return '({}/{})'.format(instance.movie_id, uuid4())
 
 
 class MovieImage(models.Model):
