@@ -39,6 +39,8 @@ class MovieManager(models.Manager):
 
 
 class Movie(models.Model):
+    # best practice for creating choice fields, integer values to be saved to the database
+    # and string values to be displayed to users
     NOT_RATED = 0
     RATED_G = 1
     RATED_PG = 2
@@ -58,8 +60,8 @@ class Movie(models.Model):
     website = models.URLField(blank=True)
     director = models.ForeignKey(
         to="Person",
-        on_delete=models.SET_NULL,
-        related_name="directed",
+        on_delete=models.SET_NULL,      # set the director field to null if the person it's linked to is deleted
+        related_name="directed",        # for specifying reverse relations e.g person.directed.all()
         null=True,
         blank=True
     )
@@ -175,4 +177,7 @@ class MovieImage(models.Model):
     uploaded = models.DateTimeField(auto_now=True)
     movie = models.ForeignKey('Movie', on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.movie.title} image'
 
