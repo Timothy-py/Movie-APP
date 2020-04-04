@@ -168,6 +168,7 @@ class Vote(models.Model):
         unique_together = ('user', 'movie')
 
 
+# a function to return a unix-style custom path, to save uploaded images
 def movie_directory_path_with_uuid(instance, filename):
     return '({}/{})'.format(instance.movie_id, uuid4())
 
@@ -175,7 +176,7 @@ def movie_directory_path_with_uuid(instance, filename):
 class MovieImage(models.Model):
     image = models.ImageField(upload_to=movie_directory_path_with_uuid)
     uploaded = models.DateTimeField(auto_now=True)
-    movie = models.ForeignKey('Movie', on_delete=models.CASCADE)
+    movie = models.ForeignKey('Movie', related_name='movie_image', on_delete=models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
     def __str__(self):

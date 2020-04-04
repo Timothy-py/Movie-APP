@@ -1,15 +1,14 @@
-from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import (PermissionDenied)
 from django.core.cache import cache
-import django
 
 from .models import Movie, Person, Vote
 from .forms import VoteForm, MovieImageForm
 from .mixins import CachePageVaryOnCookieMixin
+
 # Create your views here.
 
 

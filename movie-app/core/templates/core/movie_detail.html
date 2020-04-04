@@ -12,14 +12,13 @@
     </div>
 
     <ul>
-        {% for i in object.movieimage_set.all %}
+        {% for i in object.movie_image.all %}
             <li><img src="{{i.image.url}}"></li>
         {% endfor %}
     </ul>
 
     <p>Directed by {{object.director}}</p>
-    <h1>{{movie}}</h1>
-    <p>{{movie.plot}}</p>
+
 {% endblock main %}
 
 {% block sidebar %}
