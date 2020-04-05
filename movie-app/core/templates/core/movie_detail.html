@@ -56,7 +56,7 @@
                 </button>
             </form>
         {% else %}
-            <p>Log in to vote for this movie</p>
+            <p><a href="{% url 'user:login' %}">Log in</a> to vote for this movie</p>
         {% endif %}
     </div>
 {% endblock sidebar %}
