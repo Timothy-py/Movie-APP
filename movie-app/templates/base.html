@@ -13,6 +13,13 @@
     <a href="{% url 'core:MovieList' %}">
         Movies
     </a>
+    <aside>
+    {% if user.is_authenticated %}
+        <a href="{% url 'user:logout' %}">Log out</a>
+    {% else %}
+        <a href="{% url 'user:login' %}">Log in</a> | <a href="{% url 'user:register' %}">Register</a>
+    {% endif %}
+    </aside>
 
     {% block main %}
 

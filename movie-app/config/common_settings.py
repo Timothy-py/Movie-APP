@@ -146,6 +146,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
 LOGIN_REDIRECT_URL = '../movies'
+LOGOUT_REDIRECT_URL = '../movies'
 
 AUTH_USER_MODEL = "auth.User"
 
