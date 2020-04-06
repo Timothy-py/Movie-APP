@@ -64,6 +64,7 @@ class MovieDetail(DetailView):
 
 class PersonDetail(DetailView):
     queryset = Person.objects.all_with_prefetch_movies()
+    template_name = 'core/person_detail.html'
 
 
 class CreateVote(LoginRequiredMixin, CreateView):

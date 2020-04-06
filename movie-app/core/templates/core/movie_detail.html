@@ -17,7 +17,7 @@
         {% endfor %}
     </ul>
 
-    <p>Directed by {{object.director}}</p>
+    <p>Directed by <a href="{% url 'core:PersonDetail' pk=object.director.pk %}">{{object.director}}</a></p>
 
 {% endblock main %}
 
